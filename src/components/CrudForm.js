@@ -1,33 +1,154 @@
-import React from "react";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-const form={
-    name:
+const initialForm = {
+  id: "",
+  name: "",
+  username: "",
+  email: "",
+  street: "",
+  suite: "",
+  city: "",
+  phone: "",
+  website: "",
+  company: "",
 };
 
-const CrudForm = () => {
-  const [form, setform] = useState({});
-  const handleChange=e=>{
+const CrudForm = ({createData, updateData, dataToEdit, setDataToEdit}) => {
+  const [form, setForm] = useState(initialForm);
 
-  }; 
-
-  const handleSubmit=e=>{
-      e.preventDefault();
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleReset=e=>{};
-    
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {      
+      if(form.id===""){//Si el id es null, se trata de un alta
+        createData(form);
+        console.log(form);
+      }else{ //caso contrario, se trata de una actualización
+        updateData(form);
+      }
+    } catch (error) {
+      alert("Datos incompletos");
+    }
+    handleReset();
+  };
+
+  const handleReset = (e) => {
+    setForm(initialForm);
+    setDataToEdit(null); //lo lleva al valor inicial
+  };
+
   return (
     <>
-      <div>Add</div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Name..." onChange={handleChange} value={form.name}/>
-        <input type="text" name="name" placeholder="Name..." />
-        <input type="email" name="name" placeholder="Name..." />
+      <h2>Add User</h2>
+      <div className="form-group w-25">
+        <form onSubmit={handleSubmit}>
+          <div className="md-3">
+            <input
+              className="form-control"
+              type="hidden"
+              name="id"              
+              value={form.id}
+              required
+            />
 
-        <input type="submit" value="send"/>
-        <input type="reset" value="reset"/>
-      </form>
+            <input
+              className="form-control"
+              type="text"
+              name="name"
+              placeholder="Name..."
+              onChange={handleChange}
+              value={form.name}
+              required
+            />
+            <input
+              className="form-control"
+              type="text"
+              name="username"
+              placeholder="Username..."
+              onChange={handleChange}
+              value={form.username}
+              required
+            />
+            <input
+              className="form-control"
+              type="email"
+              name="email"
+              placeholder="Email..."
+              onChange={handleChange}
+              value={form.email}
+              required
+            />
+            <input
+              className="form-control"
+              type="text"
+              name="street"
+              placeholder="Street..."
+              onChange={handleChange}
+              value={form.street}
+              required
+            />
+            <input
+              className="form-control"
+              type="text"
+              name="suite"
+              placeholder="Suite..."
+              onChange={handleChange}
+              value={form.suite}
+              required
+            />
+            <input
+              className="form-control"
+              type="text"
+              name="city"
+              placeholder="City..."
+              onChange={handleChange}
+              value={form.city}
+              required
+            />
+            <input
+              className="form-control"
+              type="tel"
+              name="phone"
+              placeholder="Phone..."
+              onChange={handleChange}
+              value={form.phone}
+              required
+            />
+            <input
+              className="form-control"
+              type="url"
+              name="website"
+              placeholder="Website..."
+              onChange={handleChange}
+              value={form.website}
+            />
+            <input
+              className="form-control"
+              type="text"
+              name="company"
+              placeholder="Company..."
+              onChange={handleChange}
+              value={form.company}
+              required
+            />
+          </div>
+          <input
+            className="btn btn-success"
+            type="submit"
+            value="Send"
+            onClick={handleSubmit}
+          />
+          <input
+            className="btn btn-danger"
+            type="reset"
+            value="Reset"
+            onClick={handleReset}
+          />
+        </form>
+      </div>
     </>
   );
 };
