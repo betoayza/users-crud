@@ -16,6 +16,16 @@ const initialForm = {
 const CrudForm = ({createData, updateData, dataToEdit, setDataToEdit}) => {
   const [form, setForm] = useState(initialForm);
 
+  useEffect(() => {
+    if(dataToEdit){
+      setForm(dataToEdit)
+    } 
+    else{  
+      setForm(initialForm);
+    }
+  }, [dataToEdit])
+  
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -42,7 +52,7 @@ const CrudForm = ({createData, updateData, dataToEdit, setDataToEdit}) => {
 
   return (
     <>
-      <h2>Add User</h2>
+      <h2>{dataToEdit ? "Edit user" : "Add user"}</h2>
       <div className="form-group w-25">
         <form onSubmit={handleSubmit}>
           <div className="md-3">
