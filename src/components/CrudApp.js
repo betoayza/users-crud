@@ -82,7 +82,15 @@ const CrudApp = () => {
     setDb(newData);
   };
 
-  const deleteData = (id) => {};
+  const deleteData = (id) => {
+    let isDelete=window.confirm(`Are you sure to delete id: ${id} ?`); //returns boolean
+  if(isDelete){
+    let newData=db.filter(el=>el.id!==id);
+    setDb(newData);
+  }else{
+    return;
+  }
+  };
 
   return (
     <>
