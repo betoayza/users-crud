@@ -94,7 +94,7 @@ const CrudApp = () => {
 
   return (
     <>
-      <h1>Crud App</h1>
+      <h1>App</h1>
       <CrudForm
         createData={createData}
         updateData={updateData}

@@ -1,0 +1,72 @@
+h1, h2 {
+    text-align: center;
+}
+
+form {   
+    margin-bottom: 3rem;    
+}
+
+div {    
+    margin: 0 auto;
+}
+
+#btn-submit {
+    font-size: large;
+    margin-left: 3rem;
+    margin-top: 1rem;
+}
+
+#btn-reset {
+    font-size: large;
+    margin-top: 1rem;
+}
+
+input {
+    margin: 0 0.5rem 0 0;
+    font-style: italic ;
+    cursor: pointer;
+}
+
+#email-th {
+    padding-left: 30px;
+}
+
+#btn-submit {
+    margin-left: 5rem;
+}
+
+#btn-reset {
+    margin-left: 0.5rem;
+}
+
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+table {       
+    margin: 0 auto;
+}
+
+th {
+    height: 40px;    
+    text-align: center;
+    color: green;
+    font-size: large;    
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+    color: darkblue;
+}
+
+#users-title {
+    color: brown;
+}
+
+#form-title {
+    color: blueviolet;
+}
+
+

@@ -13,18 +13,16 @@ const initialForm = {
   company: "",
 };
 
-const CrudForm = ({createData, updateData, dataToEdit, setDataToEdit}) => {
+const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
   const [form, setForm] = useState(initialForm);
 
   useEffect(() => {
-    if(dataToEdit){
-      setForm(dataToEdit)
-    } 
-    else{  
+    if (dataToEdit) {
+      setForm(dataToEdit);
+    } else {
       setForm(initialForm);
     }
-  }, [dataToEdit])
-  
+  }, [dataToEdit]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -32,11 +30,13 @@ const CrudForm = ({createData, updateData, dataToEdit, setDataToEdit}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    try {      
-      if(form.id===""){//Si el id es null, se trata de un alta
+    try {
+      if (form.id === "") {
+        //Si el id es null, se trata de un alta
         createData(form);
         console.log(form);
-      }else{ //caso contrario, se trata de una actualización
+      } else {
+        //caso contrario, se trata de una actualización
         updateData(form);
       }
     } catch (error) {
@@ -52,113 +52,114 @@ const CrudForm = ({createData, updateData, dataToEdit, setDataToEdit}) => {
 
   return (
     <>
-      <h2>{dataToEdit ? "Edit user" : "Add user"}</h2>
-      <div className="form-group w-25">
-        <form onSubmit={handleSubmit}>
-          <div className="md-3">
-            <input
-              className="form-control"
-              type="hidden"
-              name="id"              
-              value={form.id}
-              required
-            />
+      <h2 id="form-title">{dataToEdit ? "Edit user" : "Add user"}</h2>
 
-            <input
-              className="form-control"
-              type="text"
-              name="name"
-              placeholder="Name..."
-              onChange={handleChange}
-              value={form.name}
-              required
-            />
-            <input
-              className="form-control"
-              type="text"
-              name="username"
-              placeholder="Username..."
-              onChange={handleChange}
-              value={form.username}
-              required
-            />
-            <input
-              className="form-control"
-              type="email"
-              name="email"
-              placeholder="Email..."
-              onChange={handleChange}
-              value={form.email}
-              required
-            />
-            <input
-              className="form-control"
-              type="text"
-              name="street"
-              placeholder="Street..."
-              onChange={handleChange}
-              value={form.street}
-              required
-            />
-            <input
-              className="form-control"
-              type="text"
-              name="suite"
-              placeholder="Suite..."
-              onChange={handleChange}
-              value={form.suite}
-              required
-            />
-            <input
-              className="form-control"
-              type="text"
-              name="city"
-              placeholder="City..."
-              onChange={handleChange}
-              value={form.city}
-              required
-            />
-            <input
-              className="form-control"
-              type="tel"
-              name="phone"
-              placeholder="Phone..."
-              onChange={handleChange}
-              value={form.phone}
-              required
-            />
-            <input
-              className="form-control"
-              type="url"
-              name="website"
-              placeholder="Website..."
-              onChange={handleChange}
-              value={form.website}
-            />
-            <input
-              className="form-control"
-              type="text"
-              name="company"
-              placeholder="Company..."
-              onChange={handleChange}
-              value={form.company}
-              required
-            />
-          </div>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group w-25">
           <input
-            className="btn btn-success"
-            type="submit"
-            value="Send"
-            onClick={handleSubmit}
+            className="form-control mb-3"
+            type="hidden"
+            name="id"
+            value={form.id}
+            required
+          />
+
+          <input
+            className="form-control"
+            type="text"
+            name="name"
+            placeholder="Name..."
+            onChange={handleChange}
+            value={form.name}
+            required
           />
           <input
-            className="btn btn-danger"
-            type="reset"
-            value="Reset"
-            onClick={handleReset}
+            className="form-control"
+            type="text"
+            name="username"
+            placeholder="Username..."
+            onChange={handleChange}
+            value={form.username}
+            required
           />
-        </form>
-      </div>
+          <input
+            className="form-control"
+            type="email"
+            name="email"
+            placeholder="Email..."
+            onChange={handleChange}
+            value={form.email}
+            required
+          />
+          <input
+            className="form-control"
+            type="text"
+            name="street"
+            placeholder="Street..."
+            onChange={handleChange}
+            value={form.street}
+            required
+          />
+          <input
+            className="form-control"
+            type="text"
+            name="suite"
+            placeholder="Suite..."
+            onChange={handleChange}
+            value={form.suite}
+            required
+          />
+          <input
+            className="form-control"
+            type="text"
+            name="city"
+            placeholder="City..."
+            onChange={handleChange}
+            value={form.city}
+            required
+          />
+          <input
+            className="form-control"
+            type="tel"
+            name="phone"
+            placeholder="Phone..."
+            onChange={handleChange}
+            value={form.phone}
+            required
+          />
+          <input
+            className="form-control"
+            type="url"
+            name="website"
+            placeholder="Website..."
+            onChange={handleChange}
+            value={form.website}
+          />
+          <input
+            className="form-control"
+            type="text"
+            name="company"
+            placeholder="Company..."
+            onChange={handleChange}
+            value={form.company}
+            required
+          />
+        <input
+          className="btn btn-success"
+          id="btn-submit"
+          type="submit"
+          value="Send"
+          onClick={handleSubmit}
+        />
+        <input
+          className="btn btn-danger"
+          id="btn-reset"
+          type="reset"
+          value="Reset"
+          onClick={handleReset}
+        />
+        </div>
+      </form>
     </>
   );
 };

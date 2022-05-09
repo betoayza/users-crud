@@ -5,19 +5,20 @@ const CrudTable = ({ db, setDataToEdit, deleteData }) => {
   console.log(db);
   return (
     <>
-      <h2>CrudTable</h2>
-      <table>
+      <h2 id="users-title">Users:</h2>
+      <table className="table">
         <thead>
-          <tr>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Street</th>
-            <th>Suite</th>
-            <th>City</th>
-            <th>Phone</th>
-            <th>Website</th>
-            <th>Company</th>
+          <tr className="table-success">
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Street</th>
+            <th scope="col">Suite</th>
+            <th scope="col">City</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Website</th>
+            <th scope="col">Company</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +27,14 @@ const CrudTable = ({ db, setDataToEdit, deleteData }) => {
               <td>Sin Datos</td>
             </tr>
           ) : (
-            db.map((e) => <CrudTableRow key={e.id} elem={e} setDataToEdit={setDataToEdit} deleteData={deleteData} />)
+            db.map((e) => (
+              <CrudTableRow
+                key={e.id}
+                elem={e}
+                setDataToEdit={setDataToEdit}
+                deleteData={deleteData}
+              />
+            ))
           )}
         </tbody>
       </table>

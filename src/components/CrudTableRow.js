@@ -16,8 +16,8 @@ const CrudTableRow = ({elem, setDataToEdit, deleteData}) => {
            <td>{website}</td>
            <td>{company}</td>
            <td>
-              <button onClick={()=>setDataToEdit(elem)}>Editar</button>
-              <button onClick={()=>deleteData(id)}>Eliminar</button>
+              <button className="btn btn-primary" onClick={()=>setDataToEdit(elem)}>Edit</button>
+              <button className="btn btn-secondary" onClick={()=>deleteData(id)}>Delete</button>
            </td>
        </tr>
 
