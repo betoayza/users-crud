@@ -1,9 +1,20 @@
-h1, h2 {
+body {
+    background-image: url('http://rebel.cl/wp-content/uploads/2016/07/Abstract-blue-background-wallpaper-102-1024x640.jpg');
+    background-size: cover;
+}
+
+h2 {
+    text-align: center;    
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
     text-align: center;
 }
 
 form {   
-    margin-bottom: 3rem;    
+   margin-bottom: 3rem;      
 }
 
 div {    
@@ -22,7 +33,7 @@ div {
 }
 
 input {
-    margin: 0 0.5rem 0 0;
+    
     font-style: italic ;
     cursor: pointer;
 }
@@ -45,14 +56,16 @@ input {
 }
 
 table {       
-    margin: 0 auto;
+      
+      width: 80%;
 }
 
-th {
+th, tr {
     height: 40px;    
     text-align: center;
     color: green;
-    font-size: large;    
+    font-size: large;   
+    border-radius: 10px; 
 }
 
 td {
@@ -68,5 +81,9 @@ td {
 #form-title {
     color: blueviolet;
 }
+ #form-div {    
+    margin-top: 3rem;
+} 
+
 
 
