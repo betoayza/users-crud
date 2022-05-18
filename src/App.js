@@ -1,10 +1,10 @@
-import CrudApp from './components/CrudApp';
+import CrudAPI from './components/CrudAPI';
 
 function App() {
   return (
     <>
       <h1>CRUD USERS</h1>
-      <CrudApp />
+      <CrudAPI />     
     </>
   );
 }

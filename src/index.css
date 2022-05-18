@@ -13,13 +13,17 @@ h1 {
     text-align: center;
 }
 
-form {   
-   margin-bottom: 3rem;      
-}
-
-div {    
+div {
     margin: 0 auto;
 }
+
+form {   
+    margin-bottom: 3rem;        
+}
+
+#form-div {    
+    margin-top: 3rem;    
+} 
 
 #btn-submit {
     font-size: large;
@@ -43,11 +47,7 @@ input {
 }
 
 #btn-submit {
-    margin-left: 5rem;
-}
-
-#btn-reset {
-    margin-left: 0.5rem;
+    margin-left: 5rem;    
 }
 
 
@@ -74,6 +74,10 @@ td {
     color: darkblue;
 }
 
+#td-sin-datos { /*checkear*/
+    text-align: center;
+}
+
 #users-title {
     color: brown;
 }
@@ -81,9 +85,6 @@ td {
 #form-title {
     color: blueviolet;
 }
- #form-div {    
-    margin-top: 3rem;
-} 
 
 
 

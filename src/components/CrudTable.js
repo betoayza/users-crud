@@ -23,9 +23,9 @@ const CrudTable = ({ db, setDataToEdit, deleteData }) => {
             </tr>
           </thead>
           <tbody>
-            {db.length === 0 ? (
+            {!db.length ? (
               <tr colSpan="10">
-                <td>Sin Datos</td>
+                <td id="td-sin-datos">Sin Datos</td>
               </tr>
             ) : (
               db.map((e) => (

@@ -52,13 +52,12 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
 
   return (
     <>
-
       <div id="form-div">
-      <h2 id="form-title">{dataToEdit ? "Edit user" : "Add user"}</h2>
+        <h2 id="form-title">{dataToEdit ? "Edit user" : "Add user"}</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group w-25">
             <input
-              className="form-control mb-3"
+              className="form-control"
               type="hidden"
               name="id"
               value={form.id}
@@ -145,24 +144,28 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
               value={form.company}
               required
             />
-            <input
-              className="btn btn-success"
-              id="btn-submit"
-              type="submit"
-              value="Send"
-              onClick={handleSubmit}
-            />
-            <input
-              className="btn btn-danger"
-              id="btn-reset"
-              type="reset"
-              value="Reset"
-              onClick={handleReset}
-            />
+            
+            <div className="col">
+              <input
+                className="btn btn-success"
+                id="btn-submit"
+                type="submit"
+                value="Send"
+                onClick={handleSubmit}
+              />
+            
+              <input
+                className="btn btn-danger"
+                id="btn-reset"
+                type="reset"
+                value="Reset"
+                onClick={handleReset}
+              />
+              </div>                
           </div>
         </form>
       </div>
-      <hr/>
+      <hr />
     </>
   );
 };
