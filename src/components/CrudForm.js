@@ -54,7 +54,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
     <>
       <div id="form-div">
         <h2 id="form-title">{dataToEdit ? "Edit user" : "Add user"}</h2>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="form-group w-25">
             <input
               className="form-control"
@@ -144,8 +144,15 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
               value={form.company}
               required
             />
-            
-            <div className="col">
+          </div>
+
+          <div id="container-buttons-div">
+            <div
+              id="buttons-div"
+              className="btn-group"
+              role="group"
+              aria-label="Basic mixed styles example"
+            >
               <input
                 className="btn btn-success"
                 id="btn-submit"
@@ -153,7 +160,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
                 value="Send"
                 onClick={handleSubmit}
               />
-            
+
               <input
                 className="btn btn-danger"
                 id="btn-reset"
@@ -161,7 +168,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
                 value="Reset"
                 onClick={handleReset}
               />
-              </div>                
+            </div>
           </div>
         </form>
       </div>

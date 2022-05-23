@@ -25,4 +25,4 @@ const CrudTableRow = ({elem, setDataToEdit, deleteData}) => {
   )
 }
 
-export default CrudTableRow
+export default CrudTableRow;

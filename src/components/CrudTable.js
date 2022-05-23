@@ -7,7 +7,7 @@ const CrudTable = ({ db, setDataToEdit, deleteData }) => {
     <>
       <div id="table-div">
       <h2 id="users-title">Users:</h2>
-        <table className="table">
+        <table className="table  table-striped table-bordered table-sm">
           <thead>
             <tr className="table-success" id="tr-table-header">
               <th scope="col">Name</th>

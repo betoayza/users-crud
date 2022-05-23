@@ -1,12 +1,15 @@
-import React from 'react'
+import React from "react";
+import "./Loader.css";
 
 const Loader = () => {
   return (
     <>
-        <h2>Loading...</h2>
-        { console.log("Se cargó el loader") }
+      <div className="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
     </>
-  )
-}
+  );
+};
 
 export default Loader;

@@ -1,0 +1,12 @@
+h2 {
+    color: crimson;
+}
+
+#error-div {
+    border: solid 1px;
+    margin: 0 auto;
+    width: 25%;
+    vertical-align: middle;
+    background-color: black;
+    border-radius: 0.50rem;
+}

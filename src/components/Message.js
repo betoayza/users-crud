@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import './Message.css';
 
 const Message = () => {
   return (
     <>
-        <h2>An error happened!</h2>  
+        <div id="error-div">
+           <h2>An error happened!</h2>  
+        </div>
     </>
   )
 }
