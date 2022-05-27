@@ -10,43 +10,95 @@ const CrudAPI = () => {
   const [dataToEdit, setDataToEdit] = useState(null); //sirve para determinar en CrudForm si se trata de un Alta o una Actualizacion
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  
+
+  let apiHelper = helpHttp();
+  let uriDb = "http://localhost:5000/users";
 
   //La primer carga la hace en 'db'
-  useEffect(() => {    
-    let api = helpHttp();
-    let uri = "http://localhost:5000/users";
-    api.get(uri)
-      .then((res) => {
-        console.log(res);
-        if (!res.error) {
-          setDb(res);          
-        } else {
-          setDb(null);
-          setError(res);
-          console.log(error);
-        }
-      })      
-      setLoading(false);
+  useEffect(() => {
+    apiHelper.get(uriDb).then((res) => {
+      console.log(res);
+      if (!res.error) {
+        setDb(res);
+      } else {
+        setDb(null);
+        setError(res);
+        console.log(error);
+      }
+    });
+    setLoading(false);
   }, []); //solo ejecuta la 1era vez
 
   const createData = (data) => {
+    //recibe los datos del form
     console.log(data);
     data.id = Date.now();
-    console.log(data);
-    setDb([...db, data]);
+
+    let options = {
+      body: data,
+      headers: { "content-type": "application/json" },
+    };
+
+    apiHelper
+      .post(uriDb, options)
+      .then((res) => {
+        console.log(error);
+        if (!res.error) {
+          setDb({ ...db, res });
+        } else {
+          setError(res);
+        }
+      })
+      .catch((error) => error);
   };
 
   const updateData = (data) => {
-    let newData = db.map((elem) => (data.id === elem.id ? data : elem));
-    setDb(newData);
+    let endpoint = `${uriDb}/${data.id}`;
+    console.log(endpoint);
+
+    let options = {
+      body: data,
+      headers: { "content-type": "application/json" },
+    };
+
+    apiHelper
+      .put(endpoint, options)
+      .then((res) => {
+        if (!res.error) {
+          //si hay coincidencia de ID devuelve la bds actualizada
+          //si no, devuelve tal cual
+          let newData = db.map((elem) => (data.id === elem.id ? data : elem));
+          setDb(newData);
+        } else {
+          setError(res);
+        }
+      })
+      .catch((error) => error);
   };
 
   const deleteData = (id) => {
     let isDelete = window.confirm(`Are you sure to delete id: ${id} ?`); //returns boolean
+    
+    
     if (isDelete) {
-      let newData = db.filter((el) => el.id !== id);
-      setDb(newData);
+      let endpoint = `${uriDb}/${id}`;
+
+      let options={
+        headers: {"content-type": "application/json"}
+      };
+      
+      apiHelper
+      .del(endpoint, options)
+      .then((res) => {
+        if (!res.error) {
+          //filtra el id coincidente
+          let newData = db.filter((el) => el.id !== id);
+          setDb(newData);          
+        } else {
+          setError(res);
+        }
+      })
+      .catch((error) => error);
     } else {
       return;
     }
